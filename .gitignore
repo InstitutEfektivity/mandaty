@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+api/node_modules/
+
+# build output
+dist/
+*.local
+.vite/
+
+# env & secrets (NIKDY do veřejného repa)
+.env
+.env.*
+!.env.example
+
+# data ingest cache (raw stažené XML)
+data/.cache/
+data/.venv/
+__pycache__/
+*.pyc
+
+# editor / OS
+.DS_Store
+Thumbs.db
+*.log
+
+# local verification artifacts
+_*.png
+_*.cjs
