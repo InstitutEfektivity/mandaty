@@ -115,9 +115,12 @@ async function subscribeListmonk(email, name, source) {
     status: "enabled",
     lists: [Number(LISTMONK_LIST_ID)],
     // Double opt-in: subscriber zůstane „unconfirmed", Listmonk pošle potvrzovací
-    // e-mail s odkazem (list „IE Newsletter" je nastaven jako double opt-in).
+    // e-mail s odkazem (list „Newsletter Institutu efektivity" = double opt-in).
     preconfirm_subscriptions: false,
-    attribs: { source, consent: true, consent_at: new Date().toISOString() },
+    // Odlišení zdroje pro budoucí segmentaci (zatím jeden list). Listmonk v4
+    // ignoruje subscriber-level `tags` při create → segmentujeme přes attribs:
+    // segment query `subscribers.attribs->>'source' = 'kalkulacka-mandatu'`.
+    attribs: { source, segment: "kalkulacka-mandatu", consent: true, consent_at: new Date().toISOString() },
   };
   const r = await fetch(`${LISTMONK_API_URL}/api/subscribers`, {
     method: "POST",
