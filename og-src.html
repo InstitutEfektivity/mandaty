@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px}
+  .og{position:relative;width:1200px;height:630px;overflow:hidden;
+      background:#eef3f8;
+      background-image:radial-gradient(#d4dde8 1.4px,transparent 1.4px);
+      background-size:26px 26px;
+      font-family:'Inter','Segoe UI',system-ui,sans-serif}
+  .inner{position:relative;z-index:2;padding:64px 70px;height:100%;display:flex;flex-direction:column}
+  .cobrand{display:flex;align-items:center;gap:14px}
+  .cb-logo{height:30px;width:auto;display:block}
+  .cb-emap{border-radius:6px}
+  .cb-name{font-size:21px;font-weight:600}
+  .cb-x{font-size:22px;color:#94a3b8;margin:0 2px}
+  .title{margin-top:46px;font-family:'Space Grotesk','Segoe UI',sans-serif;font-weight:700;
+         font-size:82px;line-height:1.02;color:#1E3A5F;letter-spacing:-1.5px}
+  .sub{margin-top:24px;max-width:610px;font-size:27px;line-height:1.42;color:#46566b;font-weight:400}
+  .pill{margin-top:34px;display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+        background:#1E3A5F;color:#fff;font-size:21px;font-weight:600;padding:15px 28px;border-radius:999px}
+  .pill .dot{width:9px;height:9px;border-radius:999px;background:#2EC4B6;display:inline-block}
+  .url{margin-top:auto;font-size:23px;font-weight:600;color:#1FA294}
+  .hero{position:absolute;right:64px;top:50%;transform:translateY(-46%);z-index:1}
+</style></head>
+<body>
+  <div class="og">
+    <div class="hero">
+      <svg width="480" height="290" viewBox="0 0 480 290" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="258" x2="425" y2="258" stroke="#cdd9e6" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="170" cy="250" r="8.5" fill="#2EC4B6"/><circle cx="175.3" cy="223.2" r="8.5" fill="#2EC4B6"/><circle cx="190.5" cy="200.5" r="8.5" fill="#2EC4B6"/><circle cx="213.2" cy="185.3" r="8.5" fill="#1E3A5F"/><circle cx="240" cy="180" r="8.5" fill="#1E3A5F"/><circle cx="266.8" cy="185.3" r="8.5" fill="#1E3A5F"/><circle cx="289.5" cy="200.5" r="8.5" fill="#1E3A5F"/><circle cx="304.7" cy="223.2" r="8.5" fill="#1E3A5F"/><circle cx="310" cy="250" r="8.5" fill="#1E3A5F"/>
+        <circle cx="115" cy="250" r="8.5" fill="#2EC4B6"/><circle cx="124.5" cy="202.2" r="8.5" fill="#2EC4B6"/><circle cx="151.6" cy="161.6" r="8.5" fill="#2EC4B6"/><circle cx="192.2" cy="134.5" r="8.5" fill="#1E3A5F"/><circle cx="240" cy="125" r="8.5" fill="#1E3A5F"/><circle cx="287.8" cy="134.5" r="8.5" fill="#1E3A5F"/><circle cx="328.4" cy="161.6" r="8.5" fill="#1E3A5F"/><circle cx="355.5" cy="202.2" r="8.5" fill="#1E3A5F"/><circle cx="365" cy="250" r="8.5" fill="#1E3A5F"/>
+        <circle cx="60" cy="250" r="8.5" fill="#2EC4B6"/><circle cx="73.7" cy="181.1" r="8.5" fill="#2EC4B6"/><circle cx="112.7" cy="122.7" r="8.5" fill="#2EC4B6"/><circle cx="171.1" cy="83.7" r="8.5" fill="#1E3A5F"/><circle cx="240" cy="70" r="8.5" fill="#1E3A5F"/><circle cx="308.9" cy="83.7" r="8.5" fill="#1E3A5F"/><circle cx="367.3" cy="122.7" r="8.5" fill="#1E3A5F"/><circle cx="406.3" cy="181.1" r="8.5" fill="#1E3A5F"/><circle cx="420" cy="250" r="8.5" fill="#1E3A5F"/>
+      </svg>
+    </div>
+    <div class="inner">
+      <div class="cobrand">
+        <img src="public/ie-logo.svg" class="cb-logo" alt=""/>
+        <span class="cb-name" style="color:#1E3A5F">Institut efektivity</span>
+        <span class="cb-x">×</span>
+        <img src="public/emap-logo.svg" class="cb-logo cb-emap" alt=""/>
+        <span class="cb-name" style="color:#0B2447">electionmap.cz</span>
+      </div>
+      <h1 class="title">Kalkulačka<br/>mandátů</h1>
+      <p class="sub">Kolik hlasů potřebujete, aby se z nich staly mandáty? D'Hondt, křížkování i data vaší obce.</p>
+      <span class="pill"><span class="dot"></span>Postavte kampaň na datech</span>
+      <div class="url">mandaty.institutefektivity.cz</div>
+    </div>
+  </div>
+</body></html>
