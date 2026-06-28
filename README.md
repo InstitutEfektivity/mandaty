@@ -42,10 +42,6 @@ npm run ingest   # předzpracování opendat do public/data/ (volitelné)
 
 Stack: Vite + React + TypeScript + Tailwind CSS.
 
-## Nasazení
-
-Statický build (`dist/`) běží jako `nginx:alpine` kontejner za Caddy reverse proxy na serveru `ie-prod-1`, doména `mandaty.institutefektivity.cz`. Newsletter registrace obsluhuje malá API služba (`api/`) zapisující do Twenty CRM + Listmonk. Detaily v `infra-stack` repu (neveřejné).
-
 ---
 
 © Institut efektivity. Zdroj volebních dat: Český statistický úřad (volby.cz), CC BY 4.0.
