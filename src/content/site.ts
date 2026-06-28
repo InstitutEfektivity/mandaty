@@ -20,16 +20,16 @@ export const site = {
     about: "O projektu",
     method: "Jak to funguje",
     newsletter: "Newsletter",
-    cta: "Odebírat novinky",
+    cta: "Nové nástroje",
   },
 
   hero: {
-    eyebrow: "Bezplatný nástroj pro volební kampaně",
+    eyebrow: "Postavte kampaň na datech · zdarma, bez registrace",
     title: "Kolik hlasů potřebujete, aby se z nich staly mandáty?",
     subtitle:
-      "Spočítejte si, kolik hlasů znamená 1 % i jeden mandát, přepočtěte výsledky D'Hondtovou metodou a pochopte, jak funguje křížkování. Bez registrace, na datech, podle skutečných pravidel komunálních voleb.",
+      "Spočítejte si, kolik hlasů znamená 1 % i jeden mandát a přepočtěte výsledky D'Hondtovou metodou. Vše podle skutečných pravidel komunálních voleb – a na reálných datech vaší obce.",
     ctaPrimary: "Začít počítat",
-    ctaSecondary: "Jak výpočet funguje",
+    ctaSecondary: "Jak to funguje",
     stats: [
       { value: "491/2001", label: "podle zákona o volbách do zastupitelstev obcí" },
       { value: "D'Hondt", label: "přesný přepočet hlasů na mandáty" },
@@ -134,17 +134,17 @@ export const site = {
 
   newsletter: {
     eyebrow: "Newsletter Institutu efektivity",
-    title: "Chcete víc nástrojů a dat pro lepší politiku?",
+    title: "Dáme vědět, až přibude další nástroj pro vaši kampaň.",
     subtitle:
-      "Institut efektivity staví otevřené nástroje nad veřejnými daty. Nechte nám e-mail a dáme vědět, až přibude další – predikce výsledků, volební kalkulačka i analýzy pro veřejnou správu.",
+      "Institut efektivity staví otevřené nástroje nad veřejnými daty. Nechte nám e-mail – ozveme se jen, když přibude nová kalkulačka, predikce výsledků nebo analýza. Žádný spam, pár e-mailů ročně.",
     email: "Váš e-mail",
     emailPlaceholder: "jmeno@email.cz",
     name: "Jméno (nepovinné)",
     consent:
       "Souhlasím se zpracováním e-mailu za účelem zasílání novinek Institutu efektivity. Odhlásit se lze kdykoli.",
-    submit: "Odebírat novinky",
+    submit: "Chci nové nástroje",
     submitting: "Odesílám…",
-    success: "Hotovo! Přihlásili jsme vás k odběru novinek Institutu efektivity.",
+    success: "Hotovo! Jste v seznamu. Ozveme se, jakmile přibude nový nástroj nebo analýza – nic mezitím.",
     error: "Něco se nepovedlo. Zkuste to prosím znovu.",
   },
 
@@ -153,7 +153,7 @@ export const site = {
     why: {
       h: "Proč kalkulačku děláme",
       p: [
-        "Komunální volby rozhoduje překvapivě málo hlasů. V menších obcích může o mandátu rozhodnout pár desítek lidí – a přesto většina kandidátek plánuje kampaň od oka, bez čísel.",
+        "O komunálních volbách rozhoduje překvapivě málo hlasů. V menších obcích může o mandátu rozhodnout pár desítek lidí – a přesto většina kandidátek plánuje kampaň od oka, bez čísel.",
         "Institut efektivity staví otevřené nástroje nad veřejnými daty. Tahle kalkulačka má jediný cíl: dát všem kandidátkám – velkým i malým – stejný přístup k tomu, co data o volbách říkají. Když budou kampaně stavět na faktech, vyhraje kvalita.",
         "Nástroj vzniká ve spolupráci s electionmap.cz, mapou volebních okrsků pro plánování kampaní. Kalkulačka ukáže, kolik hlasů potřebujete; electionmap.cz ukáže, kde je hledat.",
       ],

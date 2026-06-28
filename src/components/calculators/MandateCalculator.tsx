@@ -63,7 +63,8 @@ export function MandateCalculator() {
     })) ?? [];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+    <div className="space-y-6">
+      <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
       {/* Vstupy */}
       <div className="space-y-5">
         <ObecPicker selected={obec} onSelect={applyObec} onClear={() => setObec(null)} />
@@ -148,11 +149,14 @@ export function MandateCalculator() {
                 </div>
               </div>
             )}
-
-            <DHondtTableView result={result} colorFor={colorFor} />
           </div>
         )}
       </div>
+      </div>
+
+      {result && result.seatsAllocated > 0 && (
+        <DHondtTableView result={result} colorFor={colorFor} />
+      )}
     </div>
   );
 }
@@ -177,7 +181,7 @@ function DHondtTableView({
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-sm">
           <thead>
-            <tr className="text-brand-gray-dark">
+            <tr className="text-slate-600">
               <th className="px-4 py-2 text-left font-medium">Listina</th>
               {shown.map((d) => (
                 <th key={d} className="px-3 py-2 text-right font-medium">
@@ -201,13 +205,13 @@ function DHondtTableView({
                   return (
                     <td key={d} className="px-3 py-2 text-right tabular-nums">
                       {v == null ? (
-                        <span className="text-slate-300">–</span>
+                        <span className="text-slate-400">–</span>
                       ) : (
                         <span
                           className={
                             win
-                              ? "rounded-md bg-brand-teal/15 px-1.5 py-0.5 font-bold text-brand-teal-dark"
-                              : "text-brand-gray-dark"
+                              ? "rounded-md bg-brand-teal/20 px-1.5 py-0.5 font-bold text-brand-teal-dark"
+                              : "text-slate-600"
                           }
                         >
                           {formatNumber(v, 1)}

@@ -5,11 +5,19 @@ import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 /* ── Co-brand lockup: Institut efektivity × electionmap.cz ─────────────── */
-export function CoBrand({ size = "sm", className }: { size?: "sm" | "lg"; className?: string }) {
+export function CoBrand({
+  size = "sm",
+  logosOnly = false,
+  className,
+}: {
+  size?: "sm" | "lg";
+  logosOnly?: boolean;
+  className?: string;
+}) {
   const logo = size === "lg" ? "h-9" : "h-7";
-  const text = size === "lg" ? "text-base" : "text-xs";
+  const text = size === "lg" ? "text-base" : "text-sm";
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn("flex items-center gap-2.5", className)}>
       <a
         href={site.brand.ieUrl}
         target="_blank"
@@ -17,8 +25,8 @@ export function CoBrand({ size = "sm", className }: { size?: "sm" | "lg"; classN
         className="flex items-center gap-2 transition hover:opacity-80"
         title={site.brand.ieName}
       >
-        <img src="/ie-logo.svg" alt="" className={cn(logo, "w-auto")} aria-hidden />
-        <span className={cn("font-semibold text-brand-blue", text)}>{site.brand.ieName}</span>
+        <img src="/ie-logo.svg" alt={site.brand.ieName} className={cn(logo, "w-auto")} />
+        {!logosOnly && <span className={cn("font-semibold text-brand-blue", text)}>{site.brand.ieName}</span>}
       </a>
       <span className={cn("text-brand-gray-dark/50", size === "lg" ? "text-xl" : "text-base")}>×</span>
       <a
@@ -28,8 +36,8 @@ export function CoBrand({ size = "sm", className }: { size?: "sm" | "lg"; classN
         className="flex items-center gap-2 transition hover:opacity-80"
         title={site.brand.emapName}
       >
-        <img src="/emap-logo.svg" alt="" className={cn(logo, "w-auto rounded-md")} aria-hidden />
-        <span className={cn("font-semibold text-emap-navy", text)}>{site.brand.emapName}</span>
+        <img src="/emap-logo.svg" alt={site.brand.emapName} className={cn(logo, "w-auto rounded-md")} />
+        {!logosOnly && <span className={cn("font-semibold text-emap-navy", text)}>{site.brand.emapName}</span>}
       </a>
     </div>
   );
@@ -62,6 +70,7 @@ export function Header() {
               {n.label}
             </a>
           ))}
+          <CoBrand size="sm" logosOnly className="ml-2 hidden border-l border-slate-200 pl-3 lg:flex" />
           <a href="#newsletter" className="btn-primary ml-2 px-5 py-2 text-sm">
             {site.nav.cta}
           </a>
