@@ -33,7 +33,7 @@ export const site = {
     stats: [
       { value: "491/2001", label: "podle zákona o volbách do zastupitelstev obcí" },
       { value: "D'Hondt", label: "přesný přepočet hlasů na mandáty" },
-      { value: "6 250+", label: "obcí s předvyplněnými daty z minulých voleb" },
+      { value: "6 380+", label: "obcí a městských částí s daty z minulých voleb" },
     ],
   },
 
