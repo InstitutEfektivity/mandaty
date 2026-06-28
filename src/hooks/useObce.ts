@@ -7,6 +7,8 @@ export interface ObecIndexEntry {
   kraj: string;
   obyvatel: number;
   mandatu: number;
+  /** NUTS kód okresu – klíč k detailnímu balíčku /data/okres/<nuts>.json */
+  okresNuts: string;
 }
 
 export interface ObecStrana {
@@ -52,11 +54,19 @@ export function useObceIndex() {
   return { obce, status };
 }
 
-export async function fetchObecDetail(kod: string): Promise<ObecDetail | null> {
+// Cache načtených okresních balíčků (znovuvybrání obce ve stejném okrese = bez fetch).
+const okresCache = new Map<string, ObecDetail[]>();
+
+export async function fetchObecDetail(okresNuts: string, kod: string): Promise<ObecDetail | null> {
   try {
-    const r = await fetch(`${BASE}data/obce/${kod}.json`);
-    if (!r.ok) return null;
-    return (await r.json()) as ObecDetail;
+    let bundle = okresCache.get(okresNuts);
+    if (!bundle) {
+      const r = await fetch(`${BASE}data/okres/${okresNuts}.json`);
+      if (!r.ok) return null;
+      bundle = (await r.json()) as ObecDetail[];
+      okresCache.set(okresNuts, bundle);
+    }
+    return bundle.find((o) => o.kod === kod) ?? null;
   } catch {
     return null;
   }

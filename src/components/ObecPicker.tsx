@@ -2,7 +2,13 @@ import { useMemo, useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { Command } from "cmdk";
 import { MapPin, Search, X, Loader2, ChevronDown } from "lucide-react";
-import { useObceIndex, fetchObecDetail, normalizeText, type ObecDetail } from "@/hooks/useObce";
+import {
+  useObceIndex,
+  fetchObecDetail,
+  normalizeText,
+  type ObecDetail,
+  type ObecIndexEntry,
+} from "@/hooks/useObce";
 import { site } from "@/content/site";
 import { formatNumber } from "@/lib/utils";
 
@@ -37,9 +43,9 @@ export function ObecPicker({
     );
   }
 
-  async function choose(kod: string) {
+  async function choose(o: ObecIndexEntry) {
     setBusy(true);
-    const detail = await fetchObecDetail(kod);
+    const detail = await fetchObecDetail(o.okresNuts, o.kod);
     setBusy(false);
     setOpen(false);
     setQuery("");
@@ -88,8 +94,8 @@ export function ObecPicker({
                 {matches.map((o) => (
                   <Command.Item
                     key={o.kod}
-                    value={o.kod}
-                    onSelect={() => choose(o.kod)}
+                    value={`${o.nazev} ${o.okres} ${o.kod}`}
+                    onSelect={() => choose(o)}
                     className="flex cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm aria-selected:bg-brand-teal/10"
                   >
                     <span className="min-w-0 flex-1 truncate font-medium text-brand-blue">{o.nazev}</span>

@@ -1,0 +1,14 @@
+{
+  "name": "mandaty-api",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Newsletter subscribe endpoint pro kalkulačku mandátů – zápis do Twenty CRM + Listmonk.",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

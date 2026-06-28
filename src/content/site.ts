@@ -144,7 +144,7 @@ export const site = {
       "Souhlasím se zpracováním e-mailu za účelem zasílání novinek Institutu efektivity. Odhlásit se lze kdykoli.",
     submit: "Odebírat novinky",
     submitting: "Odesílám…",
-    success: "Hotovo! Potvrďte prosím odběr v e-mailu, který jsme vám poslali.",
+    success: "Hotovo! Přihlásili jsme vás k odběru novinek Institutu efektivity.",
     error: "Něco se nepovedlo. Zkuste to prosím znovu.",
   },
 
