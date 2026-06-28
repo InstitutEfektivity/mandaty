@@ -55,6 +55,29 @@ export function About() {
           </div>
         </div>
       </div>
+      {/* electionmap promo */}
+      <div className="mt-12 overflow-hidden rounded-3xl bg-emap-navy text-white">
+        <div className="grid items-center gap-6 p-7 sm:grid-cols-[1fr_auto] sm:p-9">
+          <div>
+            <div className="flex items-center gap-2">
+              <img src="/emap-logo.svg" alt="electionmap.cz" className="h-8 w-8 rounded-md" />
+              <span className="text-xs font-semibold uppercase tracking-wide text-white/60">
+                {site.about.emap.eyebrow}
+              </span>
+            </div>
+            <h3 className="mt-3 font-display text-2xl font-bold text-white">{site.about.emap.h}</h3>
+            <p className="mt-2 max-w-2xl text-white/80">{site.about.emap.p}</p>
+          </div>
+          <a
+            href={site.brand.emapUrl}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-emap px-6 py-3 font-semibold text-white shadow-lg transition hover:brightness-110"
+          >
+            {site.about.emap.cta} <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

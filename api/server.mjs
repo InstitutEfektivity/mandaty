@@ -114,7 +114,9 @@ async function subscribeListmonk(email, name, source) {
     name: name || email,
     status: "enabled",
     lists: [Number(LISTMONK_LIST_ID)],
-    preconfirm_subscriptions: true,
+    // Double opt-in: subscriber zůstane „unconfirmed", Listmonk pošle potvrzovací
+    // e-mail s odkazem (list „IE Newsletter" je nastaven jako double opt-in).
+    preconfirm_subscriptions: false,
     attribs: { source, consent: true, consent_at: new Date().toISOString() },
   };
   const r = await fetch(`${LISTMONK_API_URL}/api/subscribers`, {

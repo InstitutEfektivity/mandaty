@@ -4,7 +4,7 @@
  *
  * Specifikum komunálních voleb: každý volič má tolik hlasů, kolik se volí
  * zastupitelů (S). Proto je nutné rozlišovat „hlasy" a „lidi" – jeden volič,
- * který zakroužkuje celou kandidátku, dá straně až S hlasů.
+ * který označí křížkem celou kandidátku, dá straně až S hlasů.
  *
  *   H (celkem platných hlasů pro strany) ≈ V × t × S × f
  *     V = zapsaní voliči, t = volební účast (0–1),

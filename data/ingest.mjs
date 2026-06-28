@@ -182,8 +182,9 @@ function parseOkresXml(buf, meta, popMap) {
 
   for (const o of obce) {
     const typ = o["@_OZNAC_TYPU"];
-    // Jen řádné obecní zastupitelstvo. MCMO = městská část / městský obvod → vyloučit.
-    if (typ !== "OBEC") {
+    // Zahrnujeme řádná obecní zastupitelstva (OBEC) i městské části / městské
+    // obvody (MCMO – Praha, Brno, Ostrava, Plzeň). Ostatní typy vynecháme.
+    if (typ !== "OBEC" && typ !== "MCMO") {
       excludedSub++;
       continue;
     }
@@ -221,6 +222,7 @@ function parseOkresXml(buf, meta, popMap) {
       obyvatel: popMap.get(kod) ?? 0,
       mandatu,
       okresNuts: meta.nuts,
+      typ: typ === "MCMO" ? "MC" : "OBEC",
       volicu: toNum(ucastEl["@_ZAPSANI_VOLICI"]),
       ucast: toNum(ucastEl["@_UCAST_PROC"]),
       platneHlasy: toNum(ucastEl["@_PLATNE_HLASY"]),
@@ -285,6 +287,7 @@ async function main() {
         obyvatel: d.obyvatel,
         mandatu: d.mandatu,
         okresNuts: d.okresNuts,
+        typ: d.typ,
       });
     }
 

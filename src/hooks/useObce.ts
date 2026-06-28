@@ -9,6 +9,8 @@ export interface ObecIndexEntry {
   mandatu: number;
   /** NUTS kód okresu – klíč k detailnímu balíčku /data/okres/<nuts>.json */
   okresNuts: string;
+  /** "OBEC" = řádné obecní zastupitelstvo, "MC" = městská část / obvod. */
+  typ?: "OBEC" | "MC";
 }
 
 export interface ObecStrana {

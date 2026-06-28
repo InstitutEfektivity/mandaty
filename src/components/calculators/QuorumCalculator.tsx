@@ -1,11 +1,19 @@
 import { useState } from "react";
-import { Users, Vote } from "lucide-react";
 import { quorumStats } from "@/lib/campaign";
 import { site } from "@/content/site";
 import { formatNumber } from "@/lib/utils";
 import { Field, NumberInput, Slider, StatCard } from "@/components/ui";
 import { ObecPicker } from "@/components/ObecPicker";
 import type { ObecDetail } from "@/hooks/useObce";
+
+function peopleValue(n: number, unit: string = site.quorum.results.peopleUnit) {
+  return (
+    <span>
+      {formatNumber(n)}
+      <span className="ml-1 text-base font-semibold opacity-70">{unit}</span>
+    </span>
+  );
+}
 
 export function QuorumCalculator() {
   const [voters, setVoters] = useState(5000);
@@ -49,39 +57,33 @@ export function QuorumCalculator() {
         </Field>
       </div>
 
-      {/* Výsledky */}
+      {/* Výsledky – hlavní číslo = lidé, menší = hlasy */}
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
           <StatCard
             accent
             label={site.quorum.results.onePercent}
-            value={`${formatNumber(s.votesPerOnePercent)}`}
-            sub={
-              <span className="inline-flex items-center gap-1">
-                <Vote className="h-3.5 w-3.5" /> {site.quorum.results.votesUnit}
-                <span className="mx-1 opacity-50">·</span>
-                <Users className="h-3.5 w-3.5" /> ≈ {formatNumber(s.peoplePerOnePercent)} {site.quorum.results.peopleUnit}
-              </span>
-            }
+            value={peopleValue(s.peoplePerOnePercent)}
+            sub={`≈ ${formatNumber(s.votesPerOnePercent)} ${site.quorum.results.votesUnit}`}
           />
           <StatCard
             label={site.quorum.results.perSeat}
-            value={formatNumber(s.votesPerSeat)}
-            sub={`${site.quorum.results.votesUnit} · ≈ ${formatNumber(s.peoplePerSeat)} ${site.quorum.results.peopleUnit}`}
+            value={peopleValue(s.peoplePerSeat)}
+            sub={`≈ ${formatNumber(s.votesPerSeat)} ${site.quorum.results.votesUnit}`}
           />
           <StatCard
             label={site.quorum.results.threshold}
-            value={formatNumber(s.thresholdVotes)}
-            sub={`${site.quorum.results.votesUnit} · ≈ ${formatNumber(s.thresholdPeople)} ${site.quorum.results.peopleUnit}`}
+            value={peopleValue(s.thresholdPeople)}
+            sub={`≈ ${formatNumber(s.thresholdVotes)} ${site.quorum.results.votesUnit}`}
           />
           <StatCard
-            label={site.quorum.results.totalVotes}
-            value={formatNumber(s.totalPartyVotes)}
-            sub={`${formatNumber(s.participatingVoters)} voličů × ${seats} hlasů`}
+            label={site.quorum.results.turnout}
+            value={peopleValue(s.participatingVoters, site.quorum.results.voterUnit)}
+            sub={`${formatNumber(s.totalPartyVotes)} platných ${site.quorum.results.votesUnit}`}
           />
         </div>
         <p className="rounded-xl bg-slate-50 p-4 text-xs leading-relaxed text-brand-gray-dark">
-          {site.quorum.results.peopleHint} {site.quorum.results.note}
+          {site.quorum.results.note}
         </p>
       </div>
     </div>

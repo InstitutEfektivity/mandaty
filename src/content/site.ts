@@ -46,25 +46,25 @@ export const site = {
   quorum: {
     title: "Kolik hlasů potřebujete na 1 % a na mandát",
     intro:
-      "V komunálních volbách má každý volič tolik hlasů, kolik se volí zastupitelů. Proto se vyplatí rozlišovat „hlasy“ a „lidi“ – jeden volič, který zakroužkuje celou vaši kandidátku, vám dá tolik hlasů, kolik je mandátů.",
+      "V komunálních volbách má každý volič tolik hlasů, kolik se volí zastupitelů. Proto se vyplatí rozlišovat „hlasy“ a „lidi“ – jeden volič, který označí křížkem celou vaši kandidátku, vám dá tolik hlasů, kolik je mandátů.",
     inputs: {
       voters: "Počet voličů v obci (zapsaní v seznamu)",
       turnout: "Očekávaná volební účast",
       seats: "Počet volených zastupitelů",
       fillRate: "Míra využití hlasů",
       fillRateHelp:
-        "Kolik ze svých hlasů volič v průměru reálně použije. 100 % = volí celou kandidátku, méně = víc kroužkuje jednotlivce.",
+        "Kolik ze svých hlasů volič v průměru reálně použije. 100 % = volí celou kandidátku, méně = víc křížkuje jednotlivé kandidáty.",
     },
     results: {
       onePercent: "1 % znamená",
       perSeat: "Na 1 mandát přibližně",
       threshold: "Na 5% vstupní hranici",
+      turnout: "Přijde k volbám (odhad)",
       votesUnit: "hlasů",
       peopleUnit: "lidí",
-      peopleHint: "(voličů, kteří dají celou kandidátku)",
-      totalVotes: "Odhad všech platných hlasů v obci",
+      voterUnit: "voličů",
       note:
-        "Hodnoty jsou orientační. „Na mandát“ je hrubý odhad (celkové hlasy ÷ mandáty); skutečná cena posledního mandátu se liší podle rozložení sil mezi stranami – přesně to spočítá záložka „Přepočet na mandáty“.",
+        "Hlavní číslo je počet lidí (voličů, kteří dají vaší kandidátce celý svůj hlas), menší číslo jsou hlasy. „Na mandát“ je hrubý odhad (celkové hlasy ÷ mandáty); skutečná cena posledního mandátu se liší podle rozložení sil mezi stranami – přesně to spočítá záložka „Přepočet na mandáty“.",
     },
   },
 
@@ -100,7 +100,7 @@ export const site = {
       },
       {
         h: "Tři způsoby, jak volit",
-        p: "Označit celou stranu (hlasy dostanou její kandidáti odshora), kroužkovat jednotlivce napříč listinami, nebo obojí zkombinovat.",
+        p: "Označit křížkem celou stranu (hlasy dostanou její kandidáti odshora), zaškrtnout jednotlivé kandidáty napříč listinami (křížkování), nebo obojí zkombinovat.",
       },
       {
         h: "Preferenční posun",
@@ -144,7 +144,7 @@ export const site = {
       "Souhlasím se zpracováním e-mailu za účelem zasílání novinek Institutu efektivity. Odhlásit se lze kdykoli.",
     submit: "Chci nové nástroje",
     submitting: "Odesílám…",
-    success: "Hotovo! Jste v seznamu. Ozveme se, jakmile přibude nový nástroj nebo analýza – nic mezitím.",
+    success: "Skoro hotovo! Poslali jsme vám potvrzovací e-mail – kliknutím na odkaz odběr dokončíte.",
     error: "Něco se nepovedlo. Zkuste to prosím znovu.",
   },
 
@@ -184,6 +184,12 @@ export const site = {
       repoUrl: "https://github.com/InstitutEfektivity/mandaty",
       disclaimer:
         "Kalkulačka slouží k plánování a vzdělávání. Výsledky jsou orientační a nenahrazují oficiální výsledky voleb vyhlášené ČSÚ.",
+    },
+    emap: {
+      eyebrow: "Partner projektu",
+      h: "Kde ty hlasy hledat? Ukáže electionmap.cz",
+      p: "Kalkulačka spočítá, kolik hlasů potřebujete. electionmap.cz je interaktivní mapa všech volebních okrsků s historickými výsledky, trendy a „swing“ okrsky – přesně uvidíte, kam zaměřit letáky, stánky i kontaktní kampaň, ať každá koruna rozpočtu pracuje naplno.",
+      cta: "Prozkoumat electionmap.cz",
     },
   },
 

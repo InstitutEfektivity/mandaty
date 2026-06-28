@@ -98,7 +98,14 @@ export function ObecPicker({
                     onSelect={() => choose(o)}
                     className="flex cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm aria-selected:bg-brand-teal/10"
                   >
-                    <span className="min-w-0 flex-1 truncate font-medium text-brand-blue">{o.nazev}</span>
+                    <span className="min-w-0 flex-1 truncate font-medium text-brand-blue">
+                      {o.typ === "MC" && (
+                        <span className="mr-1.5 rounded bg-brand-teal/10 px-1 py-0.5 text-[10px] font-semibold text-brand-teal-dark">
+                          MČ
+                        </span>
+                      )}
+                      {o.nazev}
+                    </span>
                     <span className="shrink-0 text-xs text-brand-gray-dark">
                       {o.okres} · {formatNumber(o.obyvatel)} ob.
                     </span>

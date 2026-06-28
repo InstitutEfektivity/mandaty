@@ -64,7 +64,10 @@ export function NumberInput({
       <input
         type="number"
         inputMode="numeric"
-        className="field-input pr-12 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className={cn(
+          "field-input [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+          suffix ? "pr-12" : "pr-3.5",
+        )}
         value={value}
         min={min}
         max={max}
