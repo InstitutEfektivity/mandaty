@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/",
   plugins: [react()],
   resolve: {
-    alias: { "@": path.resolve(__dirname, "./src") },
+    alias: { "@": path.resolve(process.cwd(), "src") },
   },
   server: {
     port: 5180,

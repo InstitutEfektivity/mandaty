@@ -28,8 +28,11 @@
 export interface PartyInput {
   id: string;
   name: string;
-  /** Celkový počet platných hlasů pro listinu (součet hlasů kandidátů). */
-  votes: number;
+  /**
+   * Celkový počet platných hlasů pro listinu (součet hlasů kandidátů).
+   * Nepovinné, pokud jsou zadány `candidateVotes` (pak se počítá z nich).
+   */
+  votes?: number;
   /**
    * Počet (platných) kandidátů na listině (kp). Pokud není zadán, předpokládá
    * se plná listina (kp = počet mandátů S), tj. listina může získat až S mandátů.
@@ -117,7 +120,7 @@ function normalize(parties: PartyInput[], seats: number): NormalizedParty[] {
     return {
       id: p.id,
       name: p.name,
-      votes: Math.max(0, Math.round(p.votes)),
+      votes: Math.max(0, Math.round(p.votes ?? 0)),
       // Není-li počet kandidátů zadán, předpokládáme plnou listinu (kp = S).
       kp: Math.max(1, p.candidates ?? seats),
     };

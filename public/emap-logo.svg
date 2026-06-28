@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ElectionMap">
+  <rect width="64" height="64" rx="14" fill="#0B1D3A"/>
+  <path fill="#1666D7" d="M11 46V17h7.5L28 31l9.5-14H45v29h-7.5V29L28 41 18.5 29v17H11z"/>
+  <circle cx="52.5" cy="41.5" r="5.5" fill="#E21039"/>
+</svg>

@@ -6,7 +6,7 @@
   "description": "Kalkulačka mandátů – kolik hlasů potřebujete ve volbách do zastupitelstev obcí. Projekt Institutu efektivity ve spolupráci s electionmap.cz.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -28,6 +28,7 @@
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
+    "@types/node": "^22.10.5",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",

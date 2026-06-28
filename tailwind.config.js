@@ -16,8 +16,12 @@ export default {
           "gray-dark": "#64748B",
         },
         page: "#FAFBFC",
-        // electionmap akcent (co-branding) – doplněno z loga
-        emap: "#2563EB",
+        // electionmap akcent (co-branding) – z loga electionmap.cz
+        emap: {
+          DEFAULT: "#1666D7",
+          navy: "#0B1D3A",
+          red: "#E21039",
+        },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
