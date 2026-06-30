@@ -10,14 +10,15 @@ export function CoBrand({
   logosOnly = false,
   className,
 }: {
-  size?: "sm" | "lg";
+  size?: "sm" | "lg" | "xl";
   logosOnly?: boolean;
   className?: string;
 }) {
-  const logo = size === "lg" ? "h-9" : "h-7";
-  const text = size === "lg" ? "text-base" : "text-sm";
+  const logo = size === "xl" ? "h-12" : size === "lg" ? "h-9" : "h-7";
+  const text = size === "xl" ? "text-xl" : size === "lg" ? "text-base" : "text-sm";
+  const times = size === "xl" ? "text-2xl" : size === "lg" ? "text-xl" : "text-base";
   return (
-    <div className={cn("flex items-center gap-2.5", className)}>
+    <div className={cn("flex items-center", size === "xl" ? "gap-4" : "gap-2.5", className)}>
       <a
         href={site.brand.ieUrl}
         target="_blank"
@@ -28,7 +29,7 @@ export function CoBrand({
         <img src="/ie-logo.svg" alt={site.brand.ieName} className={cn(logo, "w-auto")} />
         {!logosOnly && <span className={cn("font-semibold text-brand-blue", text)}>{site.brand.ieName}</span>}
       </a>
-      <span className={cn("text-brand-gray-dark/50", size === "lg" ? "text-xl" : "text-base")}>×</span>
+      <span className={cn("text-brand-gray-dark/50", times)}>×</span>
       <a
         href={site.brand.emapUrl}
         target="_blank"

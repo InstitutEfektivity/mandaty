@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Kalkulačka mandátů – kolik hlasů potřebujete ve volbách do zastupitelstev obcí. Projekt Institutu efektivity ve spolupráci s electionmap.cz.",
+  "description": "Kalkulačka mandátů – kolik hlasů potřebujete ve volbách do zastupitelstev obcí. Projekt Institutu efektivity ve spolupráci s ElectionMap.cz.",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

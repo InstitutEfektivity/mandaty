@@ -81,19 +81,6 @@ export default function App() {
                     <BookOpen className="h-5 w-5" /> {site.hero.ctaSecondary}
                   </a>
                 </motion.div>
-
-                <motion.div
-                  initial="hidden"
-                  animate="show"
-                  custom={4}
-                  variants={fadeUp}
-                  className="mt-8 inline-block rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-card"
-                >
-                  <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wide text-brand-gray-dark">
-                    {site.brand.cooperation}
-                  </p>
-                  <CoBrand size="lg" className="flex-wrap justify-center lg:justify-start" />
-                </motion.div>
               </div>
 
               {/* Pravý sloupec – živý produktový vizuál */}
@@ -107,11 +94,25 @@ export default function App() {
               </motion.div>
             </div>
 
+            {/* Kdo za tímto projektem stojí – co-brand, plná šířka */}
+            <motion.div
+              initial="hidden"
+              animate="show"
+              custom={5}
+              variants={fadeUp}
+              className="mt-12 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-card sm:mt-14 sm:p-10"
+            >
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-gray-dark">
+                Kdo za tímto projektem stojí
+              </p>
+              <CoBrand size="xl" className="mt-5 flex-wrap justify-center" />
+            </motion.div>
+
             {/* Hero stats */}
             <motion.dl
               initial="hidden"
               animate="show"
-              custom={5}
+              custom={6}
               variants={fadeUp}
               className="mx-auto mt-16 grid max-w-3xl gap-4 sm:grid-cols-3"
             >

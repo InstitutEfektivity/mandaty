@@ -10,9 +10,9 @@ export const site = {
     claim: "Postavte kampaň na datech.",
     ieName: "Institut efektivity",
     ieUrl: "https://institutefektivity.cz",
-    emapName: "electionmap.cz",
+    emapName: "ElectionMap.cz",
     emapUrl: "https://electionmap.cz",
-    cooperation: "Projekt Institutu efektivity ve spolupráci s electionmap.cz",
+    cooperation: "Projekt Institutu efektivity ve spolupráci s ElectionMap.cz",
   },
 
   nav: {
@@ -155,7 +155,7 @@ export const site = {
       p: [
         "O komunálních volbách rozhoduje překvapivě málo hlasů. V menších obcích může o mandátu rozhodnout pár desítek lidí – a přesto většina kandidátek plánuje kampaň od oka, bez čísel.",
         "Institut efektivity staví otevřené nástroje nad veřejnými daty. Tahle kalkulačka má jediný cíl: dát všem kandidátkám – velkým i malým – stejný přístup k tomu, co data o volbách říkají. Když budou kampaně stavět na faktech, vyhraje kvalita.",
-        "Nástroj vzniká ve spolupráci s electionmap.cz, mapou volebních okrsků pro plánování kampaní. Kalkulačka ukáže, kolik hlasů potřebujete; electionmap.cz ukáže, kde je hledat.",
+        "Nástroj vzniká ve spolupráci s ElectionMap.cz, mapou volebních okrsků pro plánování kampaní. Kalkulačka ukáže, kolik hlasů potřebujete; ElectionMap.cz ukáže, kde je hledat.",
       ],
     },
     method: {
@@ -187,9 +187,9 @@ export const site = {
     },
     emap: {
       eyebrow: "Partner projektu",
-      h: "Kde ty hlasy hledat? Ukáže electionmap.cz",
-      p: "Kalkulačka spočítá, kolik hlasů potřebujete. electionmap.cz je interaktivní mapa všech volebních okrsků s historickými výsledky, trendy a „swing“ okrsky – přesně uvidíte, kam zaměřit letáky, stánky i kontaktní kampaň, ať každá koruna rozpočtu pracuje naplno.",
-      cta: "Prozkoumat electionmap.cz",
+      h: "Kde ty hlasy hledat? Ukáže ElectionMap.cz",
+      p: "Kalkulačka spočítá, kolik hlasů potřebujete. ElectionMap.cz je interaktivní mapa všech volebních okrsků s historickými výsledky, trendy a „swing“ okrsky – přesně uvidíte, kam zaměřit letáky, stánky i kontaktní kampaň, ať každá koruna rozpočtu pracuje naplno.",
+      cta: "Prozkoumat ElectionMap.cz",
     },
   },
 

@@ -1,6 +1,5 @@
 import { Github, Database, Scale, Target, ArrowUpRight } from "lucide-react";
 import { site } from "@/content/site";
-import { CoBrand } from "@/components/layout";
 
 export function About() {
   return (
@@ -14,13 +13,6 @@ export function About() {
             {site.about.why.p.map((p, i) => (
               <p key={i} className="leading-relaxed">{p}</p>
             ))}
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-5">
-            <p className="text-xs font-semibold uppercase tracking-wide text-brand-gray-dark">
-              Kdo za tím stojí
-            </p>
-            <CoBrand size="lg" className="mt-3 flex-wrap" />
           </div>
         </div>
 
@@ -55,26 +47,43 @@ export function About() {
           </div>
         </div>
       </div>
+
       {/* electionmap promo */}
       <div className="mt-12 overflow-hidden rounded-3xl bg-emap-navy text-white">
-        <div className="grid items-center gap-6 p-7 sm:grid-cols-[1fr_auto] sm:p-9">
+        <div className="grid items-center gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_1.05fr] lg:gap-10">
           <div>
-            <div className="flex items-center gap-2">
-              <img src="/emap-logo.svg" alt="electionmap.cz" className="h-8 w-8 rounded-md" />
-              <span className="text-xs font-semibold uppercase tracking-wide text-white/60">
+            <div className="flex items-center gap-3">
+              <img src="/emap-logo.svg" alt={site.brand.emapName} className="h-14 w-14 rounded-xl shadow-lg" />
+              <span className="text-sm font-semibold uppercase tracking-wide text-white/60">
                 {site.about.emap.eyebrow}
               </span>
             </div>
-            <h3 className="mt-3 font-display text-2xl font-bold text-white">{site.about.emap.h}</h3>
-            <p className="mt-2 max-w-2xl text-white/80">{site.about.emap.p}</p>
+            <h3 className="mt-5 font-display text-2xl font-bold text-white sm:text-3xl">{site.about.emap.h}</h3>
+            <p className="mt-3 max-w-xl text-white/80">{site.about.emap.p}</p>
+            <a
+              href={site.brand.emapUrl}
+              target="_blank"
+              rel="noopener"
+              className="mt-6 inline-flex shrink-0 items-center gap-2 rounded-full bg-emap px-6 py-3 font-semibold text-white shadow-lg transition hover:brightness-110"
+            >
+              {site.about.emap.cta} <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
           <a
             href={site.brand.emapUrl}
             target="_blank"
             rel="noopener"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-emap px-6 py-3 font-semibold text-white shadow-lg transition hover:brightness-110"
+            className="group block overflow-hidden rounded-2xl border border-white/10 shadow-2xl ring-1 ring-white/5 transition hover:border-white/25"
+            title={site.brand.emapName}
           >
-            {site.about.emap.cta} <ArrowUpRight className="h-4 w-4" />
+            <img
+              src="/emap-preview.webp"
+              alt="Náhled aplikace ElectionMap.cz – dvě volební mapy okrsků vedle sebe"
+              width={1280}
+              height={625}
+              loading="lazy"
+              className="w-full transition duration-500 group-hover:scale-[1.02]"
+            />
           </a>
         </div>
       </div>
