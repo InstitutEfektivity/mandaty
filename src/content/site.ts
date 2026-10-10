@@ -122,14 +122,38 @@ export const site = {
   },
 
   obec: {
-    label: "Předvyplnit z minulých voleb",
+    label: "Předvyplnit z voleb",
     placeholder: "Vyhledejte obec…",
-    help: "Načte počet voličů, mandátů a výsledky z komunálních voleb 2022.",
+    help: {
+      "2026": "Načte počet voličů, mandátů a průběžné výsledky komunálních voleb 2026 přímo z ČSÚ.",
+      "2022": "Načte počet voličů, mandátů a konečné výsledky komunálních voleb 2022.",
+    },
     clear: "Vymazat obec",
     loading: "Načítám data obcí…",
     unavailable: "Data obcí se nepodařilo načíst – zadejte hodnoty ručně.",
     none: "Žádná obec nenalezena.",
-    source: "Zdroj: ČSÚ, komunální volby 2022",
+    source: {
+      "2026": "Zdroj: ČSÚ (volby.gov.cz), průběžné výsledky KV 2026",
+      "2022": "Zdroj: ČSÚ, komunální volby 2022",
+    },
+    sourceSwitch: {
+      ariaLabel: "Zdroj volebních dat",
+      "2026": "Volby 2026",
+      "2026badge": "živě",
+      "2022": "Volby 2022",
+    },
+    live: {
+      counted: "Sečteno",
+      okrsky: "okrsků",
+      asOf: "stav",
+      complete: "Sečteno kompletně",
+      partial: "Hlasy se mění s každou dávkou ČSÚ, dokud není sečteno 100 % okrsků.",
+      partialVoters: "Počet zapsaných voličů je zatím doplněn z voleb 2022 (celá obec).",
+      refresh: "Obnovit",
+      unavailable:
+        "Průběžné výsledky ČSÚ se teď nepodařilo stáhnout. Zkuste to za chvíli, nebo přepněte na volby 2022.",
+      notFound: "Pro tuto obec ČSÚ zatím průběžná data nezveřejnil. Zkuste to později, nebo přepněte na volby 2022.",
+    },
   },
 
   newsletter: {
@@ -179,7 +203,7 @@ export const site = {
     },
     data: {
       h: "Data a otevřenost",
-      p: "Předvyplněná data o obcích (počet voličů, mandátů a výsledky) pocházejí z otevřených dat Českého statistického úřadu (volby.cz), komunální volby 2022, licence CC BY 4.0. Kód kalkulačky je veřejný na GitHubu.",
+      p: "Předvyplněná data o obcích (počet voličů, mandátů a výsledky) pocházejí z otevřených dat Českého statistického úřadu (volby.gov.cz), licence CC BY 4.0. Průběžné výsledky komunálních voleb 2026 se stahují přímo z XML souborů ČSÚ, které úřad během sčítání průběžně aktualizuje; konečné výsledky voleb 2022 jsou předzpracované. Kód kalkulačky je veřejný na GitHubu.",
       repo: "Zdrojový kód na GitHubu",
       repoUrl: "https://github.com/InstitutEfektivity/mandaty",
       disclaimer:
@@ -196,7 +220,7 @@ export const site = {
   footer: {
     project: "Projekt Institutu efektivity",
     cooperation: "ve spolupráci s",
-    dataSource: "Zdroj volebních dat: Český statistický úřad (volby.cz), CC BY 4.0",
+    dataSource: "Zdroj volebních dat: Český statistický úřad (volby.gov.cz), CC BY 4.0",
     mission: "Děláme práci, kterou má dělat stát – a děláme ji z dat.",
     sourceCode: "Zdrojový kód",
     rights: "Institut efektivity",
