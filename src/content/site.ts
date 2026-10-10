@@ -122,8 +122,10 @@ export const site = {
   },
 
   obec: {
-    label: "Předvyplnit z voleb",
+    label: "Vyhledat obec a předvyplnit",
     placeholder: "Vyhledejte obec…",
+    recent: "Naposledy vybrané",
+    remembered: "Obec si pamatujeme – po obnovení stránky se načte znovu. Odkaz v adresním řádku můžete poslat dál.",
     help: {
       "2026": "Načte počet voličů, mandátů a průběžné výsledky komunálních voleb 2026 přímo z ČSÚ.",
       "2022": "Načte počet voličů, mandátů a konečné výsledky komunálních voleb 2022.",

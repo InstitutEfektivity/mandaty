@@ -59,6 +59,13 @@ export type DataSource = "2026" | "2022";
 const SOURCE_KEY = "mandaty.dataSource";
 
 function readInitialSource(): DataSource {
+  // 1) URL (sdílený odkaz) má přednost, 2) poslední volba v prohlížeči, 3) výchozí 2026.
+  try {
+    const u = new URLSearchParams(window.location.search).get("zdroj");
+    if (u === "2022" || u === "2026") return u;
+  } catch {
+    /* SSR / testy */
+  }
   try {
     const v = localStorage.getItem(SOURCE_KEY);
     if (v === "2022" || v === "2026") return v;
@@ -66,6 +73,76 @@ function readInitialSource(): DataSource {
     /* private mode apod. */
   }
   return "2026";
+}
+
+/* ── Zapamatovaná obec + naposledy vybrané + sdílený odkaz (?obec=KOD) ─── */
+
+const OBEC_KEY = "mandaty.obec";
+const RECENT_KEY = "mandaty.recentObce";
+export const RECENT_LIMIT = 3;
+
+function lsGet(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+function lsSet(key: string, value: string | null) {
+  try {
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
+  } catch {
+    /* ignore */
+  }
+}
+
+/** Kód obce, kterou máme po načtení stránky automaticky předvyplnit (URL > localStorage). */
+export function getInitialObecKod(): string | null {
+  try {
+    const u = new URLSearchParams(window.location.search).get("obec");
+    if (u && /^\d{3,7}$/.test(u)) return u;
+  } catch {
+    /* ignore */
+  }
+  return lsGet(OBEC_KEY);
+}
+
+export function getRecentObecKods(): string[] {
+  try {
+    const arr = JSON.parse(lsGet(RECENT_KEY) ?? "[]");
+    return Array.isArray(arr) ? arr.filter((k) => typeof k === "string").slice(0, RECENT_LIMIT) : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Zapamatuje vybranou obec (pro reload) a zařadí ji mezi naposledy vybrané. */
+export function rememberObec(kod: string) {
+  lsSet(OBEC_KEY, kod);
+  const recent = [kod, ...getRecentObecKods().filter((k) => k !== kod)].slice(0, RECENT_LIMIT);
+  lsSet(RECENT_KEY, JSON.stringify(recent));
+}
+
+export function forgetObec() {
+  lsSet(OBEC_KEY, null);
+}
+
+/** Udržuje v adresním řádku `?obec=KOD&zdroj=2026`, aby šel výsledek poslat odkazem. */
+export function syncUrl(kod: string | null, source: DataSource) {
+  try {
+    const url = new URL(window.location.href);
+    if (kod) {
+      url.searchParams.set("obec", kod);
+      url.searchParams.set("zdroj", source);
+    } else {
+      url.searchParams.delete("obec");
+      url.searchParams.delete("zdroj");
+    }
+    window.history.replaceState(window.history.state, "", url);
+  } catch {
+    /* ignore */
+  }
 }
 
 let currentSource: DataSource = readInitialSource();
