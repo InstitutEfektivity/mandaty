@@ -133,21 +133,21 @@ export default function App() {
             <p className="mt-3 text-lg text-brand-gray-dark">{site.brand.claim}</p>
           </div>
 
-          <Tabs defaultValue="quorum">
+          <Tabs defaultValue="mandates">
             <TabsList className="mx-auto mb-8 max-w-2xl">
-              <TabsTrigger value="quorum">{site.tabs.quorum}</TabsTrigger>
               <TabsTrigger value="mandates">{site.tabs.mandates}</TabsTrigger>
+              <TabsTrigger value="quorum">{site.tabs.quorum}</TabsTrigger>
               <TabsTrigger value="krizkovani">{site.tabs.krizkovani}</TabsTrigger>
             </TabsList>
 
             <div className="glass-card p-6 sm:p-8">
-              <TabsContent value="quorum" className="focus-visible:outline-none">
-                <CalcHeading title={site.quorum.title} intro={site.quorum.intro} />
-                <QuorumCalculator />
-              </TabsContent>
               <TabsContent value="mandates" className="focus-visible:outline-none">
                 <CalcHeading title={site.mandates.title} intro={site.mandates.intro} />
                 <MandateCalculator />
+              </TabsContent>
+              <TabsContent value="quorum" className="focus-visible:outline-none">
+                <CalcHeading title={site.quorum.title} intro={site.quorum.intro} />
+                <QuorumCalculator />
               </TabsContent>
               <TabsContent value="krizkovani" className="focus-visible:outline-none">
                 <CalcHeading title={site.krizkovani.title} intro={site.krizkovani.intro} />
