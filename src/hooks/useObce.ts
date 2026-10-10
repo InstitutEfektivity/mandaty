@@ -79,7 +79,7 @@ function readInitialSource(): DataSource {
 
 const OBEC_KEY = "mandaty.obec";
 const RECENT_KEY = "mandaty.recentObce";
-export const RECENT_LIMIT = 3;
+export const RECENT_LIMIT = 7;
 
 function lsGet(key: string): string | null {
   try {
