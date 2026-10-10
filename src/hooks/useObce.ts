@@ -97,11 +97,44 @@ function lsSet(key: string, value: string | null) {
   }
 }
 
-/** Kód obce, kterou máme po načtení stránky automaticky předvyplnit (URL > localStorage). */
-export function getInitialObecKod(): string | null {
+/** URL slug obce: „praha-17", „benesov"; při shodě názvů doplněný okresem: „adamov-blansko". */
+export function slugify(s: string): string {
+  return normalizeText(s)
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function obecSlug(entry: ObecIndexEntry, index: ObecIndexEntry[]): string {
+  const base = slugify(entry.nazev);
+  const sameName = index.filter((o) => slugify(o.nazev) === base);
+  if (sameName.length <= 1) return base;
+  const withOkres = `${base}-${slugify(entry.okres)}`;
+  const sameNameOkres = sameName.filter((o) => `${base}-${slugify(o.okres)}` === withOkres);
+  return sameNameOkres.length <= 1 ? withOkres : `${withOkres}-${entry.kod}`;
+}
+
+/** Najde obec podle parametru z URL – přijímá slug (název, název-okres, název-okres-kód) i starý číselný kód. */
+export function resolveObecParam(param: string, index: ObecIndexEntry[]): ObecIndexEntry | undefined {
+  const p = param.trim();
+  if (!p) return undefined;
+  if (/^\d{3,7}$/.test(p)) return index.find((o) => o.kod === p);
+  const slug = slugify(p);
+  const exact = index.filter((o) => slugify(o.nazev) === slug);
+  if (exact.length === 1) return exact[0];
+  if (exact.length > 1) return undefined; // nejednoznačné – uživatel vybere ručně
+  const kodMatch = /-(\d{3,7})$/.exec(slug);
+  if (kodMatch) {
+    const byKod = index.find((o) => o.kod === kodMatch[1]);
+    if (byKod) return byKod;
+  }
+  return index.find((o) => `${slugify(o.nazev)}-${slugify(o.okres)}` === slug);
+}
+
+/** Parametr obce, kterou máme po načtení stránky automaticky předvyplnit (URL > localStorage). */
+export function getInitialObecParam(): string | null {
   try {
     const u = new URLSearchParams(window.location.search).get("obec");
-    if (u && /^\d{3,7}$/.test(u)) return u;
+    if (u) return u;
   } catch {
     /* ignore */
   }
@@ -128,12 +161,12 @@ export function forgetObec() {
   lsSet(OBEC_KEY, null);
 }
 
-/** Udržuje v adresním řádku `?obec=KOD&zdroj=2026`, aby šel výsledek poslat odkazem. */
-export function syncUrl(kod: string | null, source: DataSource) {
+/** Udržuje v adresním řádku `?obec=praha-17&zdroj=2026`, aby šel výsledek poslat odkazem. */
+export function syncUrl(slug: string | null, source: DataSource) {
   try {
     const url = new URL(window.location.href);
-    if (kod) {
-      url.searchParams.set("obec", kod);
+    if (slug) {
+      url.searchParams.set("obec", slug);
       url.searchParams.set("zdroj", source);
     } else {
       url.searchParams.delete("obec");

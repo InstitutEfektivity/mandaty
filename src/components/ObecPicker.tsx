@@ -19,7 +19,9 @@ import {
   fetchObecDetail,
   fetchObecDetailLive,
   normalizeText,
-  getInitialObecKod,
+  getInitialObecParam,
+  resolveObecParam,
+  obecSlug,
   getRecentObecKods,
   rememberObec,
   forgetObec,
@@ -104,7 +106,7 @@ export function ObecPicker({
     setQuery("");
     rememberObec(o.kod);
     setRecentKods(getRecentObecKods());
-    syncUrl(o.kod, source);
+    syncUrl(obecSlug(o, obce), source);
     await load(o, source);
   }
 
@@ -113,8 +115,8 @@ export function ObecPicker({
     if (status !== "ready" || autoRestored.current) return;
     autoRestored.current = true;
     if (selected || lastEntry.current) return;
-    const kod = getInitialObecKod();
-    const entry = kod ? byKod.get(kod) : undefined;
+    const param = getInitialObecParam();
+    const entry = param ? resolveObecParam(param, obce) : undefined;
     if (entry) void choose(entry);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status]);
@@ -122,7 +124,7 @@ export function ObecPicker({
   // Přepnutí zdroje s vybranou obcí → znovu načíst ze zvoleného zdroje + aktualizovat URL.
   useEffect(() => {
     if (lastEntry.current && selected) {
-      syncUrl(lastEntry.current.kod, source);
+      syncUrl(obecSlug(lastEntry.current, obce), source);
       void load(lastEntry.current, source);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -124,3 +124,36 @@ describe("fetchObecDetailLive – živé XML ČSÚ KV 2026", () => {
     expect(calls).toHaveLength(1);
   });
 });
+
+import { obecSlug, resolveObecParam, slugify } from "./useObce";
+
+describe("URL slug obce", () => {
+  const idx: ObecIndexEntry[] = [
+    { ...entry("547174", "Praha 17"), okres: "Praha", typ: "MC" },
+    { ...entry("529303", "Benešov"), okres: "Benešov" },
+    { ...entry("581330", "Benešov"), okres: "Blansko" },
+    { ...entry("535826", "Adamov"), okres: "České Budějovice" },
+    { ...entry("581291", "Adamov"), okres: "Blansko" },
+  ];
+
+  it("slugify odstraní diakritiku a mezery", () => {
+    expect(slugify("Praha 17")).toBe("praha-17");
+    expect(slugify("České Budějovice")).toBe("ceske-budejovice");
+  });
+
+  it("unikátní název → jen název; shodné názvy → s okresem", () => {
+    expect(obecSlug(idx[0]!, idx)).toBe("praha-17");
+    expect(obecSlug(idx[1]!, idx)).toBe("benesov-benesov");
+    expect(obecSlug(idx[2]!, idx)).toBe("benesov-blansko");
+    expect(obecSlug(idx[4]!, idx)).toBe("adamov-blansko");
+  });
+
+  it("resolve: slug, název-okres, číselný kód, nejednoznačný název", () => {
+    expect(resolveObecParam("praha-17", idx)?.kod).toBe("547174");
+    expect(resolveObecParam("Praha 17", idx)?.kod).toBe("547174");
+    expect(resolveObecParam("benesov-blansko", idx)?.kod).toBe("581330");
+    expect(resolveObecParam("581291", idx)?.kod).toBe("581291");
+    expect(resolveObecParam("benesov", idx)).toBeUndefined();
+    expect(resolveObecParam("neexistuje", idx)).toBeUndefined();
+  });
+});
