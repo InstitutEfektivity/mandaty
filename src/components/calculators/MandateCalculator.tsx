@@ -44,6 +44,9 @@ export function MandateCalculator() {
     return allocateSeats(parties, seats);
   }, [rows, seats]);
 
+  const totalVotes = useMemo(() => rows.reduce((sum, r) => sum + (r.votes > 0 ? r.votes : 0), 0), [rows]);
+  const shareOf = (votes: number) => (totalVotes > 0 && votes > 0 ? (votes / totalVotes) * 100 : 0);
+
   const colorFor = (id: string) => {
     const idx = rows.findIndex((r) => r.id === id);
     return PARTY_COLORS[idx % PARTY_COLORS.length]!;
@@ -88,7 +91,10 @@ export function MandateCalculator() {
       <div>
         <div className="mb-2 flex items-center justify-between px-1">
           <span className="text-sm font-semibold text-brand-blue">{site.mandates.partyName}</span>
-          <span className="pr-12 text-sm font-semibold text-brand-blue">{site.mandates.partyVotes}</span>
+          <span className="pr-[6.75rem] text-sm font-semibold text-brand-blue">
+            {site.mandates.partyVotes}
+            <span className="ml-1 font-normal text-brand-gray-dark">/ %</span>
+          </span>
         </div>
         <div className="space-y-2">
           {rows.map((r, i) => (
@@ -112,6 +118,12 @@ export function MandateCalculator() {
                 className="w-36 shrink-0"
                 suffix="hl."
               />
+              <span
+                className="w-14 shrink-0 text-right text-xs tabular-nums text-brand-gray-dark"
+                title={`Podíl na součtu hlasů všech listin (${formatNumber(totalVotes)} hl.)`}
+              >
+                {r.votes > 0 && totalVotes > 0 ? `${formatNumber(shareOf(r.votes), 1)} %` : "–"}
+              </span>
               <button
                 type="button"
                 onClick={() => setRows((rs) => rs.filter((x) => x.id !== r.id))}
